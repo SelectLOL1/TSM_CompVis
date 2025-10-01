@@ -1,0 +1,17 @@
+<p>The code for the first part of the course will only require a python 3 jupyter notebook with numpy, matplotlib and scikit-image.  To use widgets, we also install ipywidgets.</p>
+<p>The recommended way to setup such an environment, that you should try in case you have issues with your installation, is the following.</p>
+<ul>
+<li>Download the miniconda installer for the latest python 3 version: <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>. you can skip this step if you have anaconda already installed and working.</li>
+<li>create a new conda environment; activate it. To do so, open a terminal and run the following. If conda is not found as a command, try explicitly opening a miniconda prompt or anaconda prompt.<br>
+<pre tabindex="-1">conda create -n cvdl<br>conda activate cvdl</pre>
+</li>
+<li>in the same terminal, in which the <em>cvdl</em> environment should now be active, run
+<pre>conda install -c conda-forge jupyter scikit-learn scikit-image matplotlib ipywidgets ipykernel</pre>
+</li>
+<li>launch the notebook:
+<pre>jupyter lab</pre>
+</li>
+</ul>
+<p>Many students successfully use a conda environment (or other virtual python environment) within Visual Studio Code. That is also OK and typically works fine.</p>
+<p>After any lecture, the instructor is available for assistance with your setup.</p>
+<p>In the second part of the course other libraries will be used for deep learning tasks (tensorflow and/or pytorch), and will be introduced in due time.</p>
