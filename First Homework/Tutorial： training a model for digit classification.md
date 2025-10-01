@@ -1,0 +1,1 @@
+This is all that is needed to have a simple digit classifier for the homework
