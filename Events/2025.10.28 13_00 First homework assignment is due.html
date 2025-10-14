@@ -1,0 +1,96 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Event</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: auto;
+      }
+      .event-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+      .icon {
+        margin-right: 5px;
+      }
+      .attribute {
+        margin-bottom: 10px;
+      }
+      .attribute span {
+        font-weight: bold;
+      }
+    </style>
+    </head>
+    <body>
+    
+    <div class="container">
+<div class="event-title"><span class="icon">&#128197;</span>First homework assignment is due</div><div class="attribute"><span class="icon">&#9201;</span>Start Time: Tue Oct 28 13:00:00 2025</div><div class="attribute"><span class="icon">&#128196;</span><h3 dir="ltr">Problem description</h3>
+<p dir="ltr">Consider a picture representing a white sheet of A4 paper with some handwritten numbers in a dark color (they have different sizes, but they are all oriented in the same direction, which is aligned with one of the edges of the paper).  Consider the attached pictures as examples. Some are easy, others are harder. Note that the paper might be pictured at an angle or from a slanted perspective.  In all pictures the four edges of the paper are clearly visible, but might be incomplete.</p>
+<p dir="ltr">Write a notebook that, given a directory, will process all images in that directory and extract all digits it can find from each picture. For each file, it should then print:</p>
+<ul>
+<li dir="ltr">
+<p dir="ltr">the name of the file, followed by</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">each of the digits that has been identified on that sheet of paper, from top to bottom.</p>
+</li>
+</ul>
+<h3 dir="ltr">Suggested approach</h3>
+<p dir="ltr">One possible approach is the following:</p>
+<ul>
+<li dir="ltr">
+<p dir="ltr">Load the image and resize it to a manageable size. You may want to convert it to grayscale.</p>
+</li>
+</ul>
+<ul>
+<li dir="ltr">
+<p dir="ltr">Look for edges using the Canny edge detector.</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Look for four long straight lines using the Hough line detector.</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">The intersections between pairs of these lines should correspond to the corners of the paper sheet.<br />(note: 4 lines define 6 different intersections!)</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Once you have the four corners of the sheet, you can obtain a straightened version of your sheet of paper, by a geometric transformation.</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Binarize and find connected components (this might be tricky when illumination is uneven. How to fix that?).</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Cut a square bounding box around each connected component.</p>
+</li>
+<li dir="ltr">
+<p dir="ltr">Resize that to a 28x28 and classify it using a convnet trained on the MNIST dataset.</p>
+</li>
+</ul>
+<h3 dir="ltr">Some useful functions</h3>
+<p dir="ltr">To resize an image: <br /><span style="font-family:'courier new', courier, monospace;"><a href="http://scikit-image.org/docs/dev/api/skimage.transform.html">skimage.transform.resize(image, output_shape)</a></span></p>
+<p dir="ltr">The notebooks in this section help in finding the intersection point of two lines, and rectifying the image of sheet of paper.</p>
+<p>To download a large dataset of handwritten digits, which can be used to train a classifier:</p>
+<p><span style="font-family:'courier new', courier, monospace;"><span class="hljs-keyword">from</span> keras.datasets <span class="hljs-keyword">import</span> mnist<br />(x_train, y_train), (x_test, y_test) = mnist.load_data()</span></p>
+<h3>Rules and expectations</h3>
+<p>The task is difficult and comprises several sub-tasks. You are not expected to implement a solution that works always perfectly.</p>
+<p>The main goal is to implement a simple straightforward solution for each sub-task, then identify and discuss its weaknesses. When does it work? When does it fail? How could we make it better?</p>
+<p>A forum is created on moodle to freely discuss these issues, brainstorm improvements, and exchange ideas about their implementation; the instructor takes part in the discussion and can provide suggestions.</p>
+<h3>Submission and grading</h3>
+<p>Submit through moodle an HTML or PDF file of your notebook implementing your solution and describing your approach. Before saving, reset the kernel and run the entire notebook. Use markdown cells to describe what your code does, and illustrate intermediate results.</p>
+<p>This homework submission is not compulsory and it is not graded; however, the final exam will contain questions that are related to the solution of the assignment. It is strongly suggested that students attempt to solve the homework and submit a solution before the deadline, even if incomplete.</p></div><div class="attribute"><span class="icon">&#128218;</span>Module Type: assign</div>
+    </div>
+    
+    </body>
+    </html>
